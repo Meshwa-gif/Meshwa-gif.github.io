@@ -1,169 +1,943 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meshwa Patel | Data Analyst Portfolio</title>
-  <style>
-  :root{
-    --accent:#0b5cff;
-    --text:#111;
-    --muted:#555;
-    --border:#e6e6e6;
-    --bg:#fff;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meshwa Patel — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:     #0DCFAA;
+    --violet:   #7B5CF6;
+    --coral:    #FF6B6B;
+    --amber:    #FFB347;
+    --navy:     #0A0E1A;
+    --navy2:    #111827;
+    --card:     #161D2E;
+    --border:   rgba(255,255,255,0.08);
+    --text:     #F0F4FF;
+    --muted:    #8893A8;
+    --font:     'Space Grotesk', sans-serif;
+    --mono:     'DM Mono', monospace;
   }
-  body{
-    font-family: Arial, Helvetica, sans-serif;
-    max-width: 920px;
-    margin: 36px auto;
-    padding: 0 16px;
-    line-height: 1.55;
-    color: var(--text);
-    background: var(--bg);
-  }
-  h1{ margin:0 0 6px; font-size: 30px; }
-  h2{ margin:24px 0 10px; font-size: 20px; }
-  h3{ margin:0 0 6px; font-size: 18px; }
-  .sub{ color: var(--muted); margin:0 0 14px; }
-  a{ color: var(--accent); text-decoration: none; }
-  a:hover{ text-decoration: underline; }
-  .links a{ margin-right: 14px; }
-  .card{
-    border:1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin: 14px 0;
-  }
-  .muted{ color: var(--muted); }
-  .tag{
-    display:inline-block;
-    border:1px solid var(--border);
-    border-radius:999px;
-    padding: 4px 10px;
-    margin: 6px 6px 0 0;
-    font-size: 12px;
-    color:#333;
-    background:#fafafa;
-  }
-  /* Bullet fix */
-  ul { margin: 8px 0 12px 18px; padding: 0; }
-  li { margin: 6px 0; }
 
-  /* Mobile */
-  @media (max-width: 520px){
-    body{ margin: 22px auto; }
-    h1{ font-size: 26px; }
-    .links a{ display:inline-block; margin: 6px 10px 0 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--navy);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    background: rgba(10,14,26,0.8);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--teal);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-bg {
+    position: fixed;
+    top: -20%; right: -10%;
+    width: 60vw; height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,92,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-bg2 {
+    position: fixed;
+    bottom: -10%; left: -5%;
+    width: 40vw; height: 40vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,207,170,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-name {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name .gradient {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--violet) 50%, var(--coral) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    max-width: 580px;
+  }
+
+  .hero-tagline strong { color: var(--text); font-weight: 600; }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--teal), var(--violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-lbl {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-family: var(--mono);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--teal), var(--violet));
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .btn-ghost:hover { border-color: var(--teal); transform: translateY(-1px); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.15;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover { border-color: rgba(13,207,170,0.3); transform: translateY(-2px); }
+
+  .skill-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .skill-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.05);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover { border-color: rgba(123,92,246,0.4); transform: translateY(-3px); }
+
+  .project-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .project-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .project-body {
+    padding: 1rem 1.5rem;
+    flex: 1;
+  }
+
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .project-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .metric-box {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 0.6rem;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .metric-lbl {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: var(--mono);
+    line-height: 1.3;
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: auto;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .tool-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .tool-1 { background: rgba(13,207,170,0.12); color: #0DCFAA; border: 1px solid rgba(13,207,170,0.25); }
+  .tool-2 { background: rgba(123,92,246,0.12); color: #A78BFA; border: 1px solid rgba(123,92,246,0.25); }
+  .tool-3 { background: rgba(255,107,107,0.12); color: #FF8F8F; border: 1px solid rgba(255,107,107,0.25); }
+  .tool-4 { background: rgba(255,179,71,0.12); color: #FFB347; border: 1px solid rgba(255,179,71,0.25); }
+
+  /* ── ACCENT BARS ── */
+  .accent-bar {
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .accent-teal    { background: linear-gradient(90deg, var(--teal), transparent); }
+  .accent-violet  { background: linear-gradient(90deg, var(--violet), transparent); }
+  .accent-coral   { background: linear-gradient(90deg, var(--coral), transparent); }
+  .accent-amber   { background: linear-gradient(90deg, var(--amber), transparent); }
+  .accent-mixed   { background: linear-gradient(90deg, var(--teal), var(--violet)); }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .exp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .exp-card:hover { border-color: rgba(13,207,170,0.25); }
+
+  .exp-role { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .exp-company { font-size: 14px; color: var(--teal); font-weight: 500; margin-bottom: 6px; }
+  .exp-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 3px;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .cert-card:hover { border-color: rgba(255,179,71,0.3); transform: translateY(-2px); }
+
+  .cert-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+  .cert-name { font-size: 13px; font-weight: 600; line-height: 1.4; }
+  .cert-org { font-size: 12px; color: var(--muted); margin-top: 4px; font-family: var(--mono); }
+
+  /* ── CONTACT ── */
+  .contact-wrapper {
+    background: linear-gradient(135deg, rgba(13,207,170,0.1), rgba(123,92,246,0.1), rgba(255,107,107,0.08));
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .contact-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .contact-sub { color: var(--muted); margin-bottom: 2rem; font-size: 15px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.7rem 1.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-link:hover { transform: translateY(-2px); }
+  .contact-link.email:hover { border-color: var(--teal); }
+  .contact-link.linkedin:hover { border-color: var(--violet); }
+  .contact-link.github:hover { border-color: var(--coral); }
+  .contact-link.fiverr:hover { border-color: var(--amber); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 13px;
+    font-family: var(--mono);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── DIVIDER ── */
+  .full-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── SCROLL FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem; }
+    .nav-links { gap: 1rem; }
+    .hero { padding: 7rem 1rem 3rem; }
+    section { padding: 3rem 1rem; }
+    .hero-stats { gap: 1.5rem; }
+    .contact-wrapper { padding: 2rem 1.25rem; }
+    .exp-card { grid-template-columns: 1fr; }
+    .exp-date { text-align: left; }
   }
 </style>
-
 </head>
 <body>
-  <h1>Meshwa Patel</h1>
-  <p class="sub">Entry-level Data Analyst | Python • SQL • Power BI • Tableau • Machine Learning • NLP</p>
 
-  <p class="links">
-    <a href="https://github.com/Meshwa-gif" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/meshwa-patel-2b24a8385" target="_blank">LinkedIn</a>
-  </p>
-  
-  <h2>Contact</h2>
-<div class="card">
-  <p class="muted" style="margin:0;">
-    Email: <a href="mailto:meshwapatel2508@gmail.com">meshwapatel2508@gmail.com</a><br/>
-    LinkedIn: <a href="https://www.linkedin.com/in/meshwa-patel-2b24a8385" target="_blank">meshwa-patel-2b24a8385</a><br/>
-    GitHub: <a href="https://github.com/Meshwa-gif" target="_blank">Meshwa-gif</a>
-  </p>
-</div>
-  
-  <h2>About</h2>
-  <p class="muted">
-    I’m an entry-level Data Analyst focused on turning messy data into clear, actionable insights. I’ve built end-to-end projects in financial fraud detection, 
-    healthcare risk prediction, and NLP sentiment analysis using Python, SQL, and modern evaluation practices. I care about data quality, interpretability, and 
-    responsible model behavior. Open to entry-level data analyst and analytics roles.
-  </p>
+<div class="hero-bg"></div>
+<div class="hero-bg2"></div>
 
-  <h2>Featured Projects</h2>
-
-  <div class="card">
-  <h3>Financial Fraud Detection</h3>
-  <p class="muted">End-to-end fraud detection pipeline on imbalanced transaction data.</p>
-
-  <ul class="muted">
-    <li>Handled highly imbalanced data; prioritized minority-class recall</li>
-    <li>Compared Logistic Regression vs Random Forest with feature importance</li>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">meshwa.dev</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+</nav>
 
-  <div>
-    <span class="tag">Python</span>
-    <span class="tag">scikit-learn</span>
-    <span class="tag">Imbalanced Data</span>
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">👋 Available for freelance — Charleston, WV</p>
+  <h1 class="hero-name">
+    Meshwa<br>
+    <span class="gradient">Patel</span>
+  </h1>
+  <p class="hero-tagline">
+    Data Analyst turning <strong>messy datasets into decisions</strong> —
+    Power BI · Python · SQL · Tableau · Machine Learning
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-lbl">years experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-lbl">portfolio projects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">135%</div>
+      <div class="stat-lbl">AAPL return found</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0.834</div>
+      <div class="stat-lbl">best model AUC</div>
+    </div>
   </div>
 
-  <p>
-    <a href="https://github.com/Meshwa-gif/fraud-detection" target="_blank">View Repository</a>
-  </p>
-</div>
-
-<div class="card">
-  <h3>Healthcare Risk Prediction</h3>
-  <p class="muted">Predictive modeling workflow with interpretability and ethical considerations.</p>
-
-  <ul class="muted">
-    <li>Baseline vs ensemble modeling; evaluated precision, recall, and F1-score</li>
-    <li>Documented interpretability and ethical limitations for clinical use</li>
-  </ul>
-
-  <div>
-    <span class="tag">Python</span>
-    <span class="tag">Classification</span>
-    <span class="tag">Model Evaluation</span>
-    <span class="tag">Ethics</span>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View my work →</a>
+    <a href="mailto:meshwapatel2508@gmail.com" class="btn-ghost">✉ Get in touch</a>
+    <a href="https://www.linkedin.com/in/meshwapatel-2b24a8385" target="_blank" class="btn-ghost">LinkedIn ↗</a>
   </div>
-
-  <p>
-    <a href="https://github.com/Meshwa-gif/healthcare-risk-prediction" target="_blank">View Repository</a>
-  </p>
 </div>
 
-<div class="card">
-  <h3>IMDb Sentiment Analysis (NLP)</h3>
-  <p class="muted">Sentiment classification on 50,000 IMDb movie reviews.</p>
+<hr class="full-divider">
 
-  <ul class="muted">
-    <li>TF-IDF on 50K reviews; Logistic Regression vs Linear SVM</li>
-    <li>Error analysis on sarcasm and mixed-sentiment failures</li>
-  </ul>
+<!-- SKILLS -->
+<section id="about">
+  <p class="section-label">What I work with</p>
+  <h2 class="section-title">Skills & Tools</h2>
 
-  <div>
-    <span class="tag">NLP</span>
-    <span class="tag">TF-IDF</span>
-    <span class="tag">Logistic Regression</span>
-    <span class="tag">Linear SVM</span>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <span class="skill-icon">📊</span>
+      <div class="accent-bar accent-teal"></div>
+      <div class="skill-name">Business Intelligence</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px;">Building dashboards that drive decisions</p>
+      <div class="skill-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">DAX</span>
+        <span class="tag">ETL</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-icon">🐍</span>
+      <div class="accent-bar accent-violet"></div>
+      <div class="skill-name">Python & ML</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px;">End-to-end analytics and predictive modeling</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">pandas</span>
+        <span class="tag">seaborn</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-icon">🗄️</span>
+      <div class="accent-bar accent-coral"></div>
+      <div class="skill-name">SQL & Data Engineering</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px;">Complex queries, JOINs, and data pipelines</p>
+      <div class="skill-tags">
+        <span class="tag">SQL</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">ERP Systems</span>
+        <span class="tag">R</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-icon">🧠</span>
+      <div class="accent-bar accent-amber"></div>
+      <div class="skill-name">NLP & Advanced Analytics</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px;">Text analysis and classification at scale</p>
+      <div class="skill-tags">
+        <span class="tag">TF-IDF</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Classification</span>
+        <span class="tag">ROC-AUC</span>
+      </div>
+    </div>
   </div>
+</section>
 
-  <p>
-    <a href="https://github.com/Meshwa-gif/nlp-sentiment-analysis" target="_blank">View Repository</a>
-  </p>
-</div>
+<hr class="full-divider">
 
-  <h2>Skills</h2>
-<div class="card">
-  <div>
-    <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span>
-    <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Excel</span>
-    <span class="tag">EDA</span><span class="tag">Model Evaluation</span><span class="tag">NLP (TF-IDF)</span>
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">5 projects. Real data.<br>Real results.</h2>
+
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="accent-bar accent-teal"></div>
+        <div class="project-num">PROJECT 01</div>
+        <div class="project-title">Superstore Sales Dashboard</div>
+        <div class="project-subtitle">Power BI · Business Intelligence</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Built an interactive Power BI dashboard analyzing 9,994 US retail transactions across 4 regions and 17 sub-categories. DAX measures for sales, profit, margin, and quantity with slicers for dynamic filtering.</p>
+        <div class="project-metrics">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--teal)">$2.3M</div>
+            <div class="metric-lbl">Total Sales</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--violet)">12.47%</div>
+            <div class="metric-lbl">Profit Margin</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--coral)">6</div>
+            <div class="metric-lbl">Visuals Built</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag tool-1">Power BI</span>
+        <span class="tool-tag tool-2">DAX</span>
+        <span class="tool-tag tool-3">Excel</span>
+        <span class="tool-tag tool-4">KPI Design</span>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="accent-bar accent-violet"></div>
+        <div class="project-num">PROJECT 02</div>
+        <div class="project-title">AAPL Stock Market Analysis</div>
+        <div class="project-subtitle">Python · Financial Analytics</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Analyzed 5 years (2013–2018) of Apple stock data — moving averages, daily returns, volatility clustering, volume patterns, and cross-stock correlation with AMZN, GOOGL, and MSFT.</p>
+        <div class="project-metrics">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--teal)">135%</div>
+            <div class="metric-lbl">Total Return</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--violet)">1,259</div>
+            <div class="metric-lbl">Trading Days</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--coral)">7</div>
+            <div class="metric-lbl">Charts Built</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag tool-1">Python</span>
+        <span class="tool-tag tool-2">Pandas</span>
+        <span class="tool-tag tool-3">Matplotlib</span>
+        <span class="tool-tag tool-4">Seaborn</span>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="accent-bar accent-coral"></div>
+        <div class="project-num">PROJECT 03</div>
+        <div class="project-title">Customer Churn Prediction</div>
+        <div class="project-subtitle">SQL + Python · Machine Learning</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">SQL-powered churn analysis on 7,043 telecom customers. Built Logistic Regression and Random Forest models to predict at-risk customers with feature importance analysis and 5 retention recommendations.</p>
+        <div class="project-metrics">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--teal)">0.834</div>
+            <div class="metric-lbl">ROC-AUC Score</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--violet)">26.6%</div>
+            <div class="metric-lbl">Churn Rate Found</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--coral)">42.7%</div>
+            <div class="metric-lbl">M-t-M Churn</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag tool-1">SQL</span>
+        <span class="tool-tag tool-2">scikit-learn</span>
+        <span class="tool-tag tool-3">Python</span>
+        <span class="tool-tag tool-4">Excel</span>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="accent-bar accent-amber"></div>
+        <div class="project-num">PROJECT 04</div>
+        <div class="project-title">IBM HR Analytics Dashboard</div>
+        <div class="project-subtitle">Tableau · HR Analytics</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Built a Tableau dashboard analyzing 1,470 IBM employees across 6 interactive visuals — attrition by department, age group, income, job satisfaction, and marital status with KPI cards.</p>
+        <div class="project-metrics">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--teal)">16.1%</div>
+            <div class="metric-lbl">Attrition Rate</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--violet)">27.9%</div>
+            <div class="metric-lbl">Under-30 Churn</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--coral)">$6,503</div>
+            <div class="metric-lbl">Avg Income</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag tool-1">Tableau</span>
+        <span class="tool-tag tool-2">HR Analytics</span>
+        <span class="tool-tag tool-3">Dashboard</span>
+        <span class="tool-tag tool-4">Data Viz</span>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="accent-bar accent-mixed"></div>
+        <div class="project-num">PROJECT 05</div>
+        <div class="project-title">E-Commerce KPI Report</div>
+        <div class="project-subtitle">SQL + Python · E-Commerce Analytics</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Analyzed 99,441 real orders from Brazil's Olist platform using SQL JOINs across 5 relational tables. Revenue trends, fulfillment rates, payment analysis, geographic distribution, and review scores.</p>
+        <div class="project-metrics">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--teal)">$15.5M</div>
+            <div class="metric-lbl">Total Revenue</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--violet)">97%</div>
+            <div class="metric-lbl">Fulfillment Rate</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--coral)">4.15★</div>
+            <div class="metric-lbl">Avg Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag tool-1">SQL</span>
+        <span class="tool-tag tool-2">Python</span>
+        <span class="tool-tag tool-3">Matplotlib</span>
+        <span class="tool-tag tool-4">Excel Export</span>
+      </div>
+    </div>
+
   </div>
-  <p class="muted" style="margin-top:10px;">
-    Focus areas: data cleaning, dashboards, predictive modeling, and responsible evaluation (limitations & bias).
-  </p>
-</div>
+</section>
 
+<hr class="full-divider">
 
-  <h2>Resume</h2>
-  <p><a href="assets/MP_Resume.pdf" target="_blank">Download Resume (PDF)</a></p>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Work history</p>
+  <h2 class="section-title">Experience</h2>
 
-  <p class="muted">© <span id="y"></span> Meshwa Patel</p>
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <div class="exp-list">
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Data Analyst Intern</div>
+        <div class="exp-company">TRM Enterprise · Charleston, WV</div>
+        <div class="exp-desc">Built Power BI dashboard suite tracking 10+ supply chain KPIs — predictive delay flags cut operational delays by 15%. Developed automated ETL pipelines in Python & SQL, reducing manual reporting time by 60%. Translated ERP data into executive-facing forecasting reports supporting C-suite decisions.</div>
+      </div>
+      <div class="exp-date">Apr 2025<br>— Mar 2026</div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Student Assistant, Data Analytics</div>
+        <div class="exp-company">University of Charleston · Charleston, WV</div>
+        <div class="exp-desc">Automated 8+ recurring financial reports using Python & SQL — saving 5+ hours of manual work weekly (~$6,500/yr). Built Tableau dashboards surfacing cost driver trends that contributed to a 10% institutional cost reduction. Designed data validation frameworks across 3+ source systems.</div>
+      </div>
+      <div class="exp-date">Aug 2024<br>— Mar 2025</div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div>
+        <div class="exp-role">Audit Associate</div>
+        <div class="exp-company">Ajay Vansjalia & Associates · Gujarat, India</div>
+        <div class="exp-desc">Engineered SQL-based financial data pipelines to audit transaction records — reduced reporting errors by 30%. Built R-based risk modeling scripts improving audit efficiency by 25%. Led data integrity validation during cross-functional ERP migration, maintaining audit continuity.</div>
+      </div>
+      <div class="exp-date">Jan 2023<br>— Jun 2024</div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- CERTIFICATIONS -->
+<section>
+  <p class="section-label">Credentials</p>
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="cert-grid">
+    <div class="cert-card fade-in">
+      <span class="cert-icon">🏅</span>
+      <div class="cert-name">Deloitte Australia — Technology Job Simulation</div>
+      <div class="cert-org">Deloitte</div>
+    </div>
+    <div class="cert-card fade-in">
+      <span class="cert-icon">📊</span>
+      <div class="cert-name">Foundations of Data Science</div>
+      <div class="cert-org">Google / Coursera</div>
+    </div>
+    <div class="cert-card fade-in">
+      <span class="cert-icon">🗄️</span>
+      <div class="cert-name">SQL for Any IT Professional: Unit 1</div>
+      <div class="cert-org">Coursera</div>
+    </div>
+    <div class="cert-card fade-in">
+      <span class="cert-icon">🔍</span>
+      <div class="cert-name">Deloitte Australia — Data Analytics Job Simulation</div>
+      <div class="cert-org">Deloitte</div>
+    </div>
+    <div class="cert-card fade-in">
+      <span class="cert-icon">📈</span>
+      <div class="cert-name">Foundations: Data, Data, Everywhere</div>
+      <div class="cert-org">Google</div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper fade-in">
+    <h2 class="contact-title">Let's build something<br>from your data 🚀</h2>
+    <p class="contact-sub">Available for freelance data analytics projects on Fiverr, or open to full-time data analyst roles in the US.</p>
+    <div class="contact-links">
+      <a href="mailto:meshwapatel2508@gmail.com" class="contact-link email">✉ Email me</a>
+      <a href="https://www.linkedin.com/in/meshwapatel-2b24a8385" target="_blank" class="contact-link linkedin">🔗 LinkedIn</a>
+      <a href="https://meshwa-gif.github.io/" target="_blank" class="contact-link github">💻 GitHub</a>
+      <a href="https://www.fiverr.com" target="_blank" class="contact-link fiverr">🌟 Hire on Fiverr</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with ♥ by Meshwa Patel · Data Analyst · Charleston, WV · 2026</p>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
