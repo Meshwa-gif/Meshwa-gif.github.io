@@ -330,6 +330,7 @@ footer p{font-size:12px;color:var(--text-muted-navy)}
           <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Matplotlib</span><span class="proj-tag">Excel Export</span></div>
           <div class="proj-footer">
             <a href="https://github.com/Meshwa-gif/Ecommerce-Olist-SQL-Analysis" target="_blank" class="proj-link proj-link-primary">View on GitHub →</a>
+            <a href="https://meshwa-gif.github.io/" target="_blank" class="proj-link proj-link-secondary">Portfolio ↗</a>
           </div>
         </div>
       </div>
